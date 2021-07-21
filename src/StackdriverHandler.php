@@ -73,6 +73,10 @@ class StackdriverHandler extends AbstractProcessingHandler
             'data'    => $record['context']
         ];
 
+        if (isset($record['extra'])) {
+            $data['extra'] = $record['extra'];
+        }
+
         $entry = $this->logger->entry($data, $options);
 
         $this->logger->write($entry);
